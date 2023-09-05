@@ -1,2 +1,2 @@
 #!/bin/bash
-per1 -ne 'print if ($.%2)'
+paste -- | cut -f 1
