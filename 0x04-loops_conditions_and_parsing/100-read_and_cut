@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# The script displays the file contents of /etc/passwrd and
+# prints the username, user id, and home directory path
+# for each user using a for while loop
+while read -r passwd;
+do
+	echo "$passwd" | cut -d ":" -f1,2,6
+done < "/etc/passwd"

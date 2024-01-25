@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# The script displays only the part of the name after the
+# first dash, of the contents of current directory in list
+# format using a for loop.
+for file in *
+do
+	if [ -f "$file" ] && [[ "$file" != .* ]]
+	then
+		echo "${file#*-}"
+	fi
+done
