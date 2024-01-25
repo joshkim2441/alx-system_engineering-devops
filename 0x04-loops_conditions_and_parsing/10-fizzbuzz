@@ -5,7 +5,7 @@
 # 5, otherwise display the number.
 for i in {1..100}
 do
-	if [ $((i % 3)) -eq 0 ] && [ $((1 % 5)) -eq 0 ]
+	if [ $((i % 15)) -eq 0 ]
 	then
 		echo "FizzBuzz"
 	elif [ $((i % 3)) -eq 0 ]
