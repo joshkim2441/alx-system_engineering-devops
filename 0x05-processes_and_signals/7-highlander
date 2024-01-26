@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 # Highlander
 
-# Function to handle SIGTERM signal
-term_handler() {
-	echo "I am invincible!!!"
-	exit 0
-}
-
-# Set the SIGTERM signal handler
-trap 'term_handler' SIGTERM
-
 # Infinite loop
 while true; do
 	echo "To infinity and beyond"
 	sleep 2
+	trap 'echo "I am invincible!!!"' SIGTERM
 done
