@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Display lines containing "bash" word to
+# get PID of this bash process
+
+$"ps" "faux" | grep bash
