@@ -1,4 +1,4 @@
-![Design of a one server web infrastructure](0-simple_web_stack-1.png)
+![Design of a simple web stack](0-simple_web_stack-1.png)
 
 # **Description**
 A simple web infrastructure hosts a website reachable through `www.foobar.com`. Each component shares the resources that the server provides (SSD, RAM and CPU).
