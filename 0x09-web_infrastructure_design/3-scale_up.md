@@ -1,9 +1,9 @@
 ![Design of scaled-up web infrastructure](3-scale_up.png)
 
 # **Description**
-This is a scaled-up version of this infrastructure in which all `SPOFs` have been eliminated by additon of a server, a load balancer, components split into a separaate cluster, and additional firewalls to enhance security.
+This is a scaled-up version of [this](https://github.com/joshkim2441/alx-system_engineering-devops/blob/master/0x09-web_infrastructure_design/2-secured_and_monitored_web_infrastructure.md) infrastructure in which all `SPOFs` have been eliminated by additon of a server, a load balancer, components split into a separaate cluster, and additional firewalls to enhance security.
 
-# **Infrastrucuter Specifications**
+# **Infrastructure Specifications**
 An additional server to distribute the load hence improving speed and website scalability when handling increased traffic. An extra load balancer configured as a cluster with the existing one using `HAProxy` to ensure high availability and reliability. Split components to improve performance and security. An extra layer of firewall security. Addditional monitoring clients to collect data from the new servers.
 
 # **Infrastructure Issues**
