@@ -1,4 +1,4 @@
-![Design of a 3-server web infrastructure](1-distributed_web_infrastrucure-1.png)
+![Design of distributed web infrastructure](1-distributed_web_infrastrucure.png)
 
 # **Description**
 A three-server web infrastructure that hosts the website `www.foobar.com` and attempts to reduce traffic of incoming requests to the main server by distributing the load to the available servers.
