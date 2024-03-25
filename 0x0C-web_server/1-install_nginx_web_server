@@ -13,17 +13,17 @@ sudo apt-get update -y -qq && \
 sudo service nginx start
 
 # Allowing Nginx through the firewall
-sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 80/tcp "Nginx HTTP/HTTPS"
 
 # Allow user ownership to website files for setting
-sudo chown -R "$USER":"$USER" /var/www/html
+sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
 sudo chmod -R 755 /var/www
 
 # Backup the default index
 cp /var/www/html/index.nginx-debian.html var/www/html/index.nginx-debian.html.bckp
 
 # Creating a new index
-echo -e "Hello World" | dd status=none of=/var/www/html/index.nginx-debian.html
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
 # Restarting Nginx
 sudo service nginx restart
