@@ -6,7 +6,7 @@ exec { 'add nginx stable repo':
 }
 
 # Update software packages list
-exec { 'Update packages':
+exec { 'update packages':
   command => 'apt-get update',
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
@@ -18,9 +18,9 @@ package { 'nginx':
 
 # Allow HTTP
 exec { 'allow HTTP':
-  command => "ufw allow 'Nginx HHTP'",
+  command => "ufw allow 'Nginx HTTP'",
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  onlyif  => '! dpkg -l nginx | egrep \'ii.nginx\' > /dev/null 2>$1',
+  onlyif  => '! dpkg -l nginx | egrep \'ii.*nginx\' > /dev/null 2>$1',
 }
 
 # Change folder rights
