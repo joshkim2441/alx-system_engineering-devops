@@ -6,49 +6,41 @@ sudo apt-get update -y
 
 # Install Nginx
 sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
 
 # Start Nginx
 sudo service nginx start
 
-# Get the host name of the server and add a custom response
-# header to know the server name for debugging
-HOSTNAME=$(hostname)
-HEADER="\\\n\tadd_header X-Served-By $HOSTNAME;\n"
-FIND=$(grep "X-Server-by" /etc/nginx/sites-available/default)
-if [[ -z $FIND ]]; then
-    sed -i "23i $HEADER" /etc/nginx/sites-available/default
-fi
-
 # Add to the nginx configuration file an error 404 page
 mkdir -p /var/www/html
-touch /var/www/html/index.html
-echo "Hello world" > /var/www/html/index.html
-touch /var/www/html/404.html
+sudo chmod -R 755 /var/www
+echo "Hello world!" > /var/www/html/index.html
 echo "Cesi n'est pas une page" > /var/www/html/404.html
 
 server_config=\
 "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name _;
-    add_header X-Served-By \$hostname;
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-    if (\$request_filename ~ redirect_me){
-        rewrite ^ https://youtube.com permanent;
-    }
-    error_page 404 /404.html;
-    location = /404.html {
-        internal;
-    }
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        add_header X-Served-By \$hostname;
+        location / {
+            try_files \$uri \$uri/ =404;
+        }
+        if (\$request_filename ~ redirect_me){
+            rewrite ^ https://youtube.com permanent;
+        }
+        error_page 404 /404.html;
+        location = /404.html {
+            internal;
+        }
 }"
+
 echo "$server_config" > /etc/nginx/sites-enabled/default
 
 # Test the configuration to make sure there are no syntax errors
 sudo nginx -t
 
 # If the configuration test is successful, reload Nginx to apply the changes
-sudo service nginx reload
+sudo service nginx restart
