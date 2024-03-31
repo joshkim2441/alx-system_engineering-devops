@@ -46,4 +46,4 @@ if [[ -z $FIND ]]; then
     sudo sed -i "40i $ERROR" /etc/nginx/sites-available/default
 fi
 
-service nginx restart
+sudo service nginx restart
