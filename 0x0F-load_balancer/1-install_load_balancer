@@ -1,20 +1,28 @@
 #!/usr/bin/env bash
 # Install and configure HAProxy on lb-01 server
 
+balancer="\
+frontend haproxy_balancer
+    bind *:80
+    mode http
+    default_backend webservers
+
+backend webservers
+    balance roundrobin
+    server 26071-web-01 184.72.121.49:80 check
+    server 26071-web-02 54.90.12.140:80 check
+"
+# Update packages
 apt-get -y update
-apt-get -y install haproxy=1.6.\*
+apt-get -y upgrade
 
-# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
-echo '
-frontend joshkimtech.tech
-        bind 0:80
-        default_backend web_servers
+# Add HAProxy PPA
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.5
+apt-get -y update
 
-backend web_servers
-        balance roundrobin
-        server 64820-web-01 100.26.152.157:80
-        server 64820-web-02 52.86.102.6:80
-' >> /etc/haproxy/haproxy.cfg
-
-# Restart HAproxy service
+# Install HAProxy
+apt-get -y install haproxy
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
+echo "$balancer" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
