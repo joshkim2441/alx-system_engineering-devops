@@ -18,6 +18,16 @@ if [[ -z $FIND ]]; then
     sudo sed -i "23i $HEADER" /etc/nginx/sites-available/default
 fi
 
+# Give the user ownership to website files for easy editing
+if [ -d "/var/www" ]; then
+	sudo chown -R "$USER":"$USER" /var/www
+	sudo chmod -R 755 /var/www
+else
+	sudo mkdir -p /var/www
+	sudo chown -R "$USER":"$USER" /var/www
+	sudo chmod -R 755 /var/www
+fi
+
 # Create a firts index.html page
 echo "Hello World!" > /var/www/html/index.html
 
