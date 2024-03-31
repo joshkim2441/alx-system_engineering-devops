@@ -4,10 +4,10 @@
 
 # Update the package lists for upgrades and new
 # package installations
-sudo apt-get update -y
+sudo apt update -y
 
 # Install Nginx
-sudo apt-get install -y nginx
+sudo apt install -y nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Add custom response header to know the server name for debugging
@@ -46,4 +46,4 @@ if [[ -z $FIND ]]; then
     sudo sed -i "40i $ERROR" /etc/nginx/sites-available/default
 fi
 
-sudo service nginx restart
+sudo systemctrl restart nginx.service
