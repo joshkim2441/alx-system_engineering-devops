@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # Install and configure HAProxy on lb-01 server
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install -y haproxy=1.6.\*
-cp -a /etc/haproxy/haproxy.cfg{,.orig}
-echo "$balancer" >> /etc/haproxy/haproxy.cfg
-sudo systemctl enable haproxy
+apt-get update -y
+apt-get upgrade -y
+apt-get install -y haproxy=1.6.\*
+systemctl enable haproxy
 HOSTNAME=$(hostname)
 echo "
 frontend http_front
