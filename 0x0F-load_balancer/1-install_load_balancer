@@ -2,7 +2,7 @@
 # Install and configure HAProxy on lb-01 server
 
 sudo apt-get update -y
-sudo apt-get uograde -y
+sudo apt-get upgrade -y
 sudo apt-get install software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
 sudo apt-get install -y haproxy
@@ -18,7 +18,7 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server 527906-web-01 100.27.4.132:80 check
+    server 527906-web-01 184.72.121.49:80 check
     server 527906-web-02 54.90.12.140:80 check
 " | sudo tee /etc/haproxy/haproxy.cfg
 
