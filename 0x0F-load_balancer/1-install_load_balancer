@@ -3,8 +3,6 @@
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
 sudo apt-get install -y haproxy=1.6.\*
 cp -a /etc/haproxy/haproxy.cfg{,.orig}
 echo "$balancer" >> /etc/haproxy/haproxy.cfg
@@ -13,10 +11,9 @@ HOSTNAME=$(hostname)
 echo "
 frontend http_front
     bind *:80
-    stats uri /haproxy?stats
-    default_backend http_back
+    default_backend web_servers
 
-backend http_back
+backend web_servers
     balance roundrobin
     server 527906-web-01 184.72.121.49:80 check
     server 527906-web-02 54.90.12.140:80 check
