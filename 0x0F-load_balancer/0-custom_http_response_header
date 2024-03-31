@@ -13,7 +13,7 @@ sudo ufw allow 'Nginx HTTP'
 # Add custom response header to know the server name for debugging
 HOST_NAME=$(hostname)
 HEADER="\\\n\tadd_header X-Served-By $HOST_NAME;\n"
-FIND=$(grep "X-Server-by" /etc/nginx/sites-available/default)
+FIND=$(grep "X-Served-By" /etc/nginx/sites-available/default)
 if [[ -z $FIND ]]; then
     sudo sed -i "23i $HEADER" /etc/nginx/sites-available/default
 fi
