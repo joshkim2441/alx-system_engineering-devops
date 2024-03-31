@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 # Install and configure HAProxy on lb-01 server
 
-balancer="\
+balancer=\
+"
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
 frontend haproxy_balancer
     bind *:80
-    mode http
     default_backend webservers
 
 backend webservers
