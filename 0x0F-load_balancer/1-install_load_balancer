@@ -7,8 +7,8 @@ apt-get install -y haproxy=1.6.\*
 systemctl enable haproxy
 HOSTNAME=$(hostname)
 echo "
-frontend http_front
-    bind *:80
+frontend joshkimtech.tech
+    bind 0:80
     default_backend web_servers
 
 backend web_servers
@@ -17,4 +17,4 @@ backend web_servers
     server 527906-web-02 54.90.12.140:80 check
 " >> /etc/haproxy/haproxy.cfg
 
-sudo systemctl restart haproxy
+service restart haproxy
