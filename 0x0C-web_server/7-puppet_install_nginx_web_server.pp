@@ -1,14 +1,14 @@
 # Add a stable version of Nginx
 
 # 7-puppet_install_nginx_web_server.pp
-exec { 'update':
-  command => 'apt-get update -y',
+exec { 'sudo update':
+  command => 'sudo apt-get update -y',
   path    => ['/usr/bin', '/usr/sbin', '/bin'],
 }
 
 package { 'nginx':
   ensure  => 'installed',
-  require => Exec['update'],
+  require => Exec['sudo update'],
 }
 
 file { '/var/www/html/index.html':
