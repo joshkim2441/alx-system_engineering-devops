@@ -1,0 +1,20 @@
+#!/usr/bin/bash env
+# Install the ufw and setss up rules on web-01
+sudo apt update -y
+sudo apt install -y ufw
+
+# Deny all incoming traffic by default
+sudo ufw default deny incoming
+
+# Allow outgoing traffic by default
+sudo ufw default allow outgoing
+
+# Allow incoming traffic for SSH (port 22)
+sudo ufw allow 22/tcp
+
+# Allow incoming traffic for HHTPS SSL (port 443)
+sudo ufw allow 443/tcp
+
+# Allow incoming traffic for HTTP (port 80)
+sudo ufw allow 80/tcp
+sudo ufw enable
