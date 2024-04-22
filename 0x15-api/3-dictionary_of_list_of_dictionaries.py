@@ -34,4 +34,3 @@ if __name__ == '__main__':
     json_encoded_data = json.dumps(builder)
     with open('todo_all_employees.json', 'w', encoding='UTF8') as myFile:
         myFile.write(json_encoded_data)
-
