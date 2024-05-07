@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """Module for querying the Reddit API"""
-import requests
 
 
 def number_of_subscribers(subreddit):
     """Query the Reddit API and returns the number of subscribers
     to the subreddit
     """
-
+    import requests
 
     if subreddit is None or not isinstance(subreddit, str):
         return 0
