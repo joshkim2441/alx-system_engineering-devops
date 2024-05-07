@@ -9,21 +9,15 @@ def top_ten(subreddit):
     posts listed in the subreddit
     """
 
-    if subreddit is None or not isinstance(subreddit, str):
-        print("None")
-
     user_agent = {'User-agent': 'Mozilla/5.0'}
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
 
-    response = get(url, headers=user_agent, params=params)
-    results = response.json()
+    response = get(url, headers=user_agent, params=params,
+                   allow_redirects=False)
 
-    try:
-        my_data = results.get('data').get('children')
-
-        for i in my_data:
-            print(i.get('data').get('title'))
-
-    except Exception:
+    if response.status_code == 404:
         print("None")
+        return
+    results = response.json().get('data')
+    {print(c.get('data').get('title')) for c in results.get('children')}
