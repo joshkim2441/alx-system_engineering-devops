@@ -9,9 +9,11 @@ def top_ten(subreddit):
     """
     import requests
 
-    headers = {"User-Agent": "Mozilla/5.0"}
-    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
+    if subreddit is None or not isinstance(subreddit, str):
+        print("None")
 
+    headers = {"User-Agent": "Mozilla/5.0"}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code != 200:
