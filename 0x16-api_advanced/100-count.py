@@ -1,14 +1,18 @@
 #!/usr/bin/python3
 """ Queries the Reddit API, parses the title of all hot articles
-and prints a sorted count of given keywords (case-insensitive, delimited by spaces.
+and prints a sorted count of given keywords (case-insensitive,
+delimited by spaces.
 """
 import requests
 import re
 from collections import Counter
 
-def count_words(subreddit, word_list, hot_list=[], after="None", word_count=Counter()):
+
+def count_words(subreddit, word_list, hot_list=[],
+                after="None", word_count=Counter()):
     """ Queries the Reddit API, parses the title of all hot articles
-    and prints a sorted count of given keywords (case-insensitive, delimited by spaces.
+    and prints a sorted count of given keywords (case-insensitive,
+    delimited by spaces.
     """
     headers = {"User-Agent": "Mozilla/5.0"}
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
@@ -31,7 +35,8 @@ def count_words(subreddit, word_list, hot_list=[], after="None", word_count=Coun
                 word_count[word] += 1
 
     if data['after']:
-        return count_words(subreddit, word_list, hot_list, data['after'], word_count)
+        return count_words(subreddit, word_list, hot_list,
+                           data['after'], word_count)
 
     sorted_word_count = sorted(word_count.items(), key=lambda x: (-x[1], x[0]))
     for word, count in sorted_word_count:
