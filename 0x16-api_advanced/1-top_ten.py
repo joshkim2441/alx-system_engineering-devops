@@ -14,7 +14,7 @@ def top_ten(subreddit):
 
     headers = {"User-Agent": "Mozilla/5.0"}
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
         print('None')
