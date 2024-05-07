@@ -3,8 +3,8 @@
 and prints a sorted count of given keywords (case-insensitive,
 delimited by spaces.
 """
-import requests
 import re
+import requests
 from collections import Counter
 
 
