@@ -14,7 +14,7 @@ def top_ten(subreddit):
                             format(subreddit),
                             headers=headers, allow_redirects=False)
 
-    if response.status_code >= 300:
+    if response.status_code != 200:
         print('None')
     else:
         [print(post.get("data").get("title"))
