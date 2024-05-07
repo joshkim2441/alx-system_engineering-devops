@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module for querying the Reddit API"""
 
 
 def number_of_subscribers(subreddit):

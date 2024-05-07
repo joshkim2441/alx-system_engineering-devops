@@ -6,6 +6,8 @@ delimited by spaces.
 
 
 from collections import Counter
+
+
 def count_words(subreddit, word_list, hot_list=[],
                 after="None", word_count=Counter()):
     """ Queries the Reddit API, parses the title of all hot articles
