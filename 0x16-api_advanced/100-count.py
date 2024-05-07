@@ -3,17 +3,18 @@
 and prints a sorted count of given keywords (case-insensitive,
 delimited by spaces.
 """
-import re
-import requests
+
+
 from collections import Counter
-
-
 def count_words(subreddit, word_list, hot_list=[],
                 after="None", word_count=Counter()):
     """ Queries the Reddit API, parses the title of all hot articles
     and prints a sorted count of given keywords (case-insensitive,
     delimited by spaces.
     """
+    import re
+    import requests
+
     headers = {"User-Agent": "Mozilla/5.0"}
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
 

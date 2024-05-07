@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """Print the titles of the first 10 hot posts listed in the subreddit
 """
-import requests
 
 
 def top_ten(subreddit):
     """Print the titles of the first 10 hot
     posts listed in the subreddit
     """
+    import requests
+
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10".
                             format(subreddit),

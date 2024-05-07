@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-import requests
-
 
 def number_of_subscribers(subreddit):
     """Query the Reddit API and returns the number of subscribers
     to the subreddit
     """
+    import requests
+
     headers = {"User-Agent": "My-User-Agent"}
     response = requests.get("https://www.reddit.com/r/{}/about.json".
                             format(subreddit), headers=headers,
