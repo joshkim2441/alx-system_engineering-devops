@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     """
     import requests
 
-    if subreddit is None or not isinstance(subreddit, str):
+    if subreddit is None or not subreddit:
         return 0
 
     headers = {"User-Agent": "Mozilla/5.0"}
