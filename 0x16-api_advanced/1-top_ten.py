@@ -9,6 +9,8 @@ def top_ten(subreddit):
     posts listed in the subreddit
     """
 
+    if subreddit is None or not isinstance(subreddit, str):
+        print("None")
 
     user_agent = {'User-agent': 'Mozilla/5.0'}
     params = {'limit': 10}
@@ -16,8 +18,7 @@ def top_ten(subreddit):
 
     response = get(url, headers=user_agent, params=params)
     results = response.json()
-    if response.status_code != 200:
-        return None
+
     try:
         my_data = results.get('data').get('children')
 
