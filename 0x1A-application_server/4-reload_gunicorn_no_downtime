@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn with no downtime
 
-pgrep gunicorn | xargs kill -HUP
+sudo pkill -HUP gunicorn
+sudo systemctl restart gunicorn.service
+sudo systemctl restart gunicorn_api.service
